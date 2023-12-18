@@ -1,0 +1,55 @@
+[System]
+Name='fuzzy_cuve'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=2
+NumRules=9
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='erreur_h'
+Range=[-1 1]
+NumMFs=3
+MF1='faible':'trapmf',[-1.75 -1.083 -0.0834 -0.0334]
+MF2='moyen':'trapmf',[-0.0834 -0.0334 0.0334 0.0834]
+MF3='fort':'trapmf',[0.0334 0.0834 1.084 1.75]
+
+[Input2]
+Name='erreur_theta'
+Range=[-1 1]
+NumMFs=3
+MF1='faible':'trapmf',[-1.75 -1.083 -0.9167 -0.25]
+MF2='moyen':'trapmf',[-0.75 -0.0834 0.0834 0.7506]
+MF3='fort':'trapmf',[0.25 0.9166 1.084 1.75]
+
+[Output1]
+Name='qe'
+Range=[-5 5]
+NumMFs=3
+MF1='faible':'trimf',[-9.17 -5 -5]
+MF2='moyen':'trimf',[-0.03 0 0.02]
+MF3='fort':'trimf',[4.94988434849653 4.98 9.15]
+
+[Output2]
+Name='pu'
+Range=[-1 1]
+NumMFs=3
+MF1='faible':'trimf',[-1.833 -1 -0.1667]
+MF2='moyen':'trimf',[-0.2 0 0.2]
+MF3='fort':'trimf',[0.1666 1 1.834]
+
+[Rules]
+1 1, 1 1 (1) : 1
+1 2, 1 2 (1) : 1
+1 3, 1 3 (1) : 1
+2 1, 2 1 (1) : 1
+2 2, 2 2 (1) : 1
+2 3, 2 3 (1) : 1
+3 1, 3 1 (1) : 1
+3 2, 3 2 (1) : 1
+3 3, 3 3 (1) : 1
